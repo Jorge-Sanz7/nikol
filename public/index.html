@@ -2,51 +2,85 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="app.js"></script>
-  <title>Ayuda porfavor saquenme de aquí</title>
+  <title>Usuarios 🌿</title>
   <style>
     * {
       box-sizing: border-box;
-      font-family: 'Verdana', sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
     }
 
     body {
-      background: linear-gradient(135deg, #1e3c72, #2a5298);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      background-color: #f7f6f3;
       padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #333;
     }
 
-    .panel {
-      background: rgba(255, 255, 255, 0.07);
-      border-radius: 20px;
-      padding: 30px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    h1 {
+      margin-bottom: 30px;
+      font-weight: 600;
+      font-size: 24px;
+      color: #2c3e50;
+    }
+
+    .card {
+      background-color: #fff;
+      padding: 25px 20px;
+      border-radius: 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       width: 100%;
-      max-width: 420px;
-      color: #fff;
+      max-width: 360px;
+      margin-bottom: 30px;
     }
 
-    .panel h2 {
-      text-align: center;
-      margin-bottom: 25px;
+    .card form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      border: 1.5px solid #ccc;
+      border-radius: 10px;
+      background-color: #fdfdfd;
+      font-size: 14px;
+      transition: border-color 0.2s ease;
+    }
+
+    input[type="text"]:focus {
+      border-color: #a3c1ff;
+      outline: none;
+    }
+
+    input[type="submit"] {
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      background-color: #ffb347;
+      color: #fff;
       font-weight: bold;
-      letter-spacing: 1px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #ffa031;
     }
 
     .link {
-      text-align: center;
       margin-bottom: 20px;
     }
 
     .link a {
-      color: #a3cfff;
+      color: #5d92d6;
       font-weight: bold;
       text-decoration: none;
     }
@@ -55,66 +89,47 @@
       text-decoration: underline;
     }
 
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 30px;
-    }
-
-    input[type="text"] {
-      padding: 10px;
-      border: none;
-      border-radius: 10px;
-      background-color: rgba(255, 255, 255, 0.15);
-      color: white;
-      font-size: 14px;
-    }
-
-    input[type="text"]::placeholder {
-      color: #ccc;
-    }
-
-    input[type="submit"] {
-      padding: 10px;
-      border: none;
-      border-radius: 10px;
-      background-color: #58c6ff;
-      color: #000;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    input[type="submit"]:hover {
-      background-color: #34aaff;
+    .title {
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 18px;
+      font-weight: 600;
     }
   </style>
 </head>
 <body>
-  <div class="panel">
-    <h2>👤 Panel de Usuarios</h2>
 
-    <div class="link">
-      <a href="/obtenerUsuario">Ver Usuarios Registrados</a>
-    </div>
+  <h1>Panel de Usuarios</h1>
 
+  <div class="link">
+    <a href="/obtenerUsuario">Obtener Usuarios</a>
+  </div>
+
+  <div class="card">
+    <div class="title">Agregar Usuario</div>
     <form action="/agregarUsuario" method="post">
-      <input type="text" name="id_us" placeholder="ID del Usuario" required />
-      <input type="text" name="nombre" placeholder="Nombre" required />
-      <input type="submit" value="Agregar 🚀" />
-    </form>
-
-    <form action="/borrarUsuario" method="post">
-      <input type="text" name="id" placeholder="ID a borrar" required />
-      <input type="submit" value="Eliminar 🗑️" />
-    </form>
-
-    <form action="/editarUsuario" method="post">
-      <input type="text" name="id" placeholder="ID a editar" required />
-      <input type="text" name="nombre" placeholder="Nuevo nombre" required />
-      <input type="submit" value="Editar ✏️" />
+      <input type="text" name="id_us" placeholder="ID del Usuario" required>
+      <input type="text" name="nombre" placeholder="Nombre del Usuario" required>
+      <input type="submit" value="Agregar Usuario">
     </form>
   </div>
+
+  <div class="card">
+    <div class="title">Borrar Usuario</div>
+    <form action="/borrarUsuario" method="post">
+      <input type="text" name="id" placeholder="ID del Usuario a borrar" required>
+      <input type="submit" value="Borrar Usuario">
+    </form>
+  </div>
+
+  <div class="card">
+    <div class="title">Modificar Usuario</div>
+    <form action="/editarUsuario" method="post">
+      <input type="text" name="id" placeholder="ID a modificar" required>
+      <input type="text" name="nombre" placeholder="Nuevo nombre" required>
+      <input type="submit" value="Modificar Usuario">
+    </form>
+  </div>
+
 </body>
 </html>
