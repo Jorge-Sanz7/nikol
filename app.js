@@ -48,78 +48,18 @@ app.get('/obtenerUsuario', (req, res) => {
         });
 
         return res.send(`
-            <!DOCTYPE html>
-            <html lang="es">
-            <head>
-                <meta charset="UTF-8">
-                <title>Usuarios</title>
-                <style>
-                    body {
-                        font-family: Arial, sans-serif;
-                        background-color: #f3f4f6;
-                        padding: 40px;
-                        text-align: center;
-                    }
-
-                    h1 {
-                        color: #111827;
-                        margin-bottom: 20px;
-                    }
-
-                    table {
-                        width: 60%;
-                        margin: 0 auto;
-                        border-collapse: collapse;
-                        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-                        background-color: white;
-                    }
-
-                    th, td {
-                        padding: 12px 15px;
-                        border-bottom: 1px solid #e5e7eb;
-                    }
-
-                    th {
-                        background-color: #3b82f6;
-                        color: white;
-                    }
-
-                    tr:hover {
-                        background-color: #f9fafb;
-                    }
-
-                    a {
-                        display: inline-block;
-                        margin-top: 30px;
-                        text-decoration: none;
-                        background-color: #10b981;
-                        color: white;
-                        padding: 10px 20px;
-                        border-radius: 8px;
-                        transition: background 0.3s;
-                    }
-
-                    a:hover {
-                        background-color: #059669;
-                    }
-                </style>
-            </head>
-            <body>
-                <h1>Lista de Usuarios</h1>
-                <table>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                    </tr>
-                    ${userHTML}
-                </table>
-                <a href="/">Volver</a>
-            </body>
-            </html>
+            <h1>Lista de Usuarios</h1>
+            <table border="1" cellpadding="5" cellspacing="0">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                </tr>
+                ${userHTML}
+            </table>
+            <br><a href="/">Volver</a>
         `);
     });
 });
-
 
 app.post('/borrarUsuario', (req, res) => {
     const id = req.body.id;
